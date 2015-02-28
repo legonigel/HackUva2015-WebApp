@@ -20,7 +20,7 @@ class Message(models.Model):
 	reciever		= models.OneToOneField(User, related_name="reciever")
 
 	def __str__(self):
-		return self.message_text + ", to " + self.reciever.name + " from " self.sender.name
+		return self.message_text + ", to " + self.reciever.name + " from " + self.sender.name
 
 class Connection(models.Model):
 	user		= models.ForeignKey(User)
