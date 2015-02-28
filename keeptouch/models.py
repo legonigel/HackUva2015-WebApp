@@ -4,13 +4,13 @@ from django.db import models
 
 class User(models.Model):
 	name 		= models.CharField(max_length=40)
-	thumbnail 	= models.ImageField()
+	thumbnail 	= models.URLField()
 	fb_id		= models.CharField(max_length=100)
-	is_online	= models.BooleanField()
+	is_online	= models.BooleanField(default=False)
 
 	def __str__(self):
 		onlineStr = ':online' if self.is_online else ':offline'
-		return self.name + " " + self.fb_id + onlineStr
+		return self.name + " ID:" + self.fb_id + onlineStr
 
 class Message(models.Model):
 	is_read			= models.BooleanField()

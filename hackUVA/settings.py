@@ -24,6 +24,8 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
 ALLOWED_HOSTS = []
 
 
@@ -36,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'allaccess',
+	'keeptouch',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,8 +64,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hackuva',
 		'USER': 'root',
-		'PASSWORD': '',
-		'HOST': '10.143.88.84',
+		'PASSWORD': 'root',
+		'HOST': '127.0.0.1',
 		'PORT': 3306,
     }
 }
