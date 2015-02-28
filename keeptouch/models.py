@@ -16,8 +16,8 @@ class Message(models.Model):
 	is_read			= models.BooleanField()
 	timestamp		= models.DateTimeField('date published')
 	message_text	= models.CharField(max_length=256)
-	sender			= models.OneToOneField(User, related_name="sender")
-	reciever		= models.OneToOneField(User, related_name="reciever")
+	sender			= models.ForeignKey(User, related_name="sender")
+	reciever		= models.ForeignKey(User, related_name="reciever")
 
 	def __str__(self):
 		return self.message_text + ", to " + self.reciever.name + " from " + self.sender.name
