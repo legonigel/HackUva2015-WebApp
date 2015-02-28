@@ -7,6 +7,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'hackUVA.views.home', name='home'),
     url(r'^', include('keeptouch.urls')),
+	
+	url(r'^accounts/', include('allaccess.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )
