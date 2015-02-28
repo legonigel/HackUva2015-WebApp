@@ -13,7 +13,7 @@ class User(models.Model):
 		return self.name + " ID:" + self.fb_id + onlineStr
 
 class Message(models.Model):
-	is_read			= models.BooleanField()
+	is_read			= models.BooleanField(default=False)
 	timestamp		= models.DateTimeField('date published')
 	message_text	= models.CharField(max_length=256)
 	sender			= models.ForeignKey(User, related_name="sender")
