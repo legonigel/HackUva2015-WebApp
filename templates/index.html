@@ -1,40 +1,35 @@
 {% extends 'base.html' %}
-{% block title %}Welcome to Keep in Touch{% endblock %}
+{% block title %}{% if not user.is_authenticated %}Welcome to Keep in Touch{% else %} Keep in Touch{% endif %}{% endblock %}
 
 {% block content %}
-          
-          <p class="lead">Server</p>
-          
-          <br><br><br>
-          
-          <form class="col-lg-12">
-            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
-              <span id="login-button-area">
-                <i class='icon-spinner icon-spin icon-large'></i>
-              </span>
-            <!-- <input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." placeholder="Enter your email address" type="text">
-              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span> -->
-            </div>
-          </form>
-        </div>
-        
-      </div> <!-- /row -->
 
-      <div class="row">
-        <div class="col-lg-12 text-center v-center">
-          <table class="table" style="width:600px;margin:0 auto;" id="friends-list-area">
-            <tr>
-              <td>Friends Using This App</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-  
-  	  <div class="row">
-       
-        <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
-          <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
-        </div>
-      
+{% if not user.is_authenticated %}
+	<div class="row box" style="width:450px; margin-left:auto; margin-right:auto; display:block;">
+		<div class="col-xs-12">
+				<p class="text-center">
+					Keep in Touch is an app that does many things. We need some more content about our app.
+				</p>
+		</div>
+	</div>
+	<div class="row box" style="width:450px; margin-left:auto; margin-right:auto; display:block;">
+		<div class="col-xs-12 text-center">
+			<h2><a href="/login/facebook"> {% load staticfiles %}
+<img src="{% static "facebook_login.png" %}" style="margin-left:auto; margin-right:auto; display:block;"></a></h2>
+		</div>
+	</div>
+{% else %}
+
+	<div class="row box text-center">
+		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+				{% for convo, thumb in convo_w_thumb %}
+					<div class="conv-outer"><a href=""><div class="row"><div class="col-xs-4"><img src={{thumb}}></div>
+					<div class="col-xs-8"><div class="conversation"> {{convo.last_message}}</div></div></a></div>
+				{% endfor %}
+		</div>
+	</div>
+
+{% endif %}
+          
+
 
 {% endblock %}
