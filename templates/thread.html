@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}{% if not user.is_authenticated %}Welcome to Keep in Touch{% else %} Keep in Touch{% endif %}{% endblock %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+	<div class="row box" style="width:450px; margin-left:auto; margin-right:auto; display:block;">
+		<div class="col-xs-12">
+				<p class="text-center">
+					Keep in Touch is an app that does many things. We need some more content about our app.
+				</p>
+		</div>
+	</div>
+	<div class="row box" style="width:450px; margin-left:auto; margin-right:auto; display:block;">
+		<div class="col-xs-12 text-center">
+			<h2><a href="/login/facebook"> {% load staticfiles %}
+<img src="{% static "facebook_login.png" %}" style="margin-left:auto; margin-right:auto; display:block;"></a></h2>
+		</div>
+	</div>
+{% else %}
+
+	<div class="row box text-center">
+		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+				{% for message, thumb in message_w_thumb %}
+					<div class="conv-outer"><a href=""><div class="row"><div class="col-xs-4"><img src={{thumb}}></div>
+					<div class="col-xs-8"><div class="conversation"> {{convo.last_message}}</div></div></a></div>
+				{% endfor %}
+		</div>
+	</div>
+
+{% endif %}
+          
+
+
+{% endblock %}
