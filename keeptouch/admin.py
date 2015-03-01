@@ -2,7 +2,7 @@ from django.contrib import admin
 from keeptouch.models import User, Message, Connection, Conversation
 
 class UserAdmin(admin.ModelAdmin):
-	fields = ['name', 'thumbnail', 'fb_id']
+	fields = ['name', 'thumbnail', 'fb_id', 'friends']
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Message)

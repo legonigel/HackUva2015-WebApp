@@ -13,6 +13,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+LOGIN_REDIRECT_URL = "/"
+
+LOGIN_URL = "/"
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -69,6 +74,13 @@ DATABASES = {
 		'PORT': 3307,
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    # Default backend
+    'django.contrib.auth.backends.ModelBackend',
+    # Additional backend
+    'allaccess.backends.AuthorizedServiceBackend',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

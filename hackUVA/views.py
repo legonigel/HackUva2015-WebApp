@@ -9,6 +9,6 @@ from allaccess.views import OAuthRedirect
 class AdditionalPermissionsRedirect(OAuthRedirect):
     
 	def get_additional_parameters(self, provider):
-        if provider.name == 'facebook':
-            # Extra permissions
-            return {'scope': 'public_profile,user_friends'}
+		if provider.name == 'facebook':
+			# Extra permissions
+			return {'scope': 'public_profile,user_friends'}
