@@ -4,7 +4,7 @@ from django.db import models
 
 class User(models.Model):
 	name 		= models.CharField(max_length=40)
-	thumbnail 	= models.URLField()
+	thumbnail 	= models.URLField(blank=True)
 	fb_id		= models.CharField(max_length=100)
 	is_online	= models.BooleanField(default=False)
 	friends		= models.ManyToManyField('self', blank=True)
@@ -16,9 +16,11 @@ class User(models.Model):
 class Conversation(models.Model):
 	user1			= models.ForeignKey(User, related_name="user1")
 	user2			= models.ForeignKey(User, related_name="user2")
+	user1_name		= models.CharField(max_length=40)
+	user2_name		= models.CharField(max_length=40)
 	timestamp		= models.DateTimeField('last published')
 	is_read			= models.BooleanField(default=False)
-	last_message	= models.CharField(max_length=256)
+	last_message	= models.CharField(max_length=256, blank=True)
 
 	def __str__(self):
 		return "Users: " + str(self.user1.pk) + "," + str(self.user2.pk) + " last_message:" + self.last_message + (':read' if self.is_read else ':unread')

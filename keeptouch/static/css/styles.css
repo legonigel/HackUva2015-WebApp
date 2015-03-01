@@ -3,6 +3,7 @@ body {
 	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color:#7a028b;
 	color:#FFFFFF;
+	font-size:1.5em;
 }
 
 h1,
@@ -75,6 +76,7 @@ hr {
 	background: #fff;
 	background: rgba(255,255,255,0.9);
 	color:#777;
+	border-radius: 5px;
 }
 
 .intro-text {
@@ -106,7 +108,12 @@ footer p {
 }
 
 .conversation{
-	padding:20px
+	padding:13px
+}
+
+.conv-outer {
+    border: 2px solid;
+    border-radius: 5px;
 }
 
 .conv-outer:nth-child(odd) {
@@ -115,6 +122,16 @@ footer p {
 
 .conv-outer img {
 	float:left;
+	border-radius: 5px;
+}
+
+.conv-outer a {
+	text-decoration:none;
+	color:#555;
+}
+
+.conv-outer img.right-img {
+	float:right;
 }
 
 @media screen and (max-width:767px){
@@ -261,4 +278,9 @@ display:none;
 	}
 }
 
+.brand a {
+	text-decoration:none;
+	color:#fff;
+
+}
 

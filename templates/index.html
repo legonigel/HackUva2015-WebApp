@@ -20,14 +20,16 @@
 {% else %}
 
 	<div class="row box text-center">
+		<div>
+			<h2> List of Conversation: </h2>
+		</div>
 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-				{% for convo, thumb in convo_w_thumb %}
-					<div class="conv-outer"><a href=""><div class="row"><div class="col-xs-4"><img src={{thumb}}></div>
-					<div class="col-xs-8"><div class="conversation"> {{convo.last_message}}</div></div></a></div>
+				{% for convo, thumb, other_user in convo_w_thumb %}
+					<div class="conv-outer"><a href="/thread/{{convo.id}}"><div class="row"><div class="col-xs-5 col-md-4 text-left"><img src={{thumb}}> &nbsp &nbsp {{other_user.name}}</div>
+					<div class="col-xs-7 col-md-8"><div class="conversation"> {{convo.last_message}}</div></div></div></a></div>
 				{% endfor %}
 		</div>
 	</div>
-
 {% endif %}
           
 

@@ -21,29 +21,14 @@
 
 	<div class="row box text-center">
 		<div>
-			<h2> Your conversation with {{other_user.name}}
+			<h2> List of Contacts: </h2>
 		</div>
 		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-				{% for msg, thumb, is_sender in msg_w_thumb %}
-				{% if is_sender %}					
-					<div class="conv-outer"><div class="row"><div class="col-xs-3 col-md-2"><img src={{thumb}}></div>
-					<div class="col-xs-9 col-md-10"><div class="conversation"> {{msg.message_text}}</div></div></div></div>
-				{% else %}
-					<div class="conv-outer"><div class="row"><div class="col-xs-9 col-md-10"><div class="conversation"> {{msg.message_text}}</div></div>
-					<div class="col-xs-3 col-md-2"><img src={{thumb}} class="right-img"></div></div></div>
-				{% endif %}
+				{% for friend, thumb in friend_w_thumb %}
+					<div class="conv-outer" style='font-size:2em'><a href="/mkthread/{{friend.fb_id}}/"><img src={{thumb}}><div class="conversation" style="padding:4px"> &nbsp &nbsp {{friend.name}}</div></a></div>
 				{% endfor %}
-			<div class="conv-outer">
-			<form action="./reply/" method="post"  style="margin: 15px 15px">
-				{% csrf_token %}
-					<input type="text" name="message" />
-
-				<input type="submit" value="Send" />
-			</form>
-		</div>
 		</div>
 	</div>
-
 {% endif %}
           
 

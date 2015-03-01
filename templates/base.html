@@ -16,7 +16,7 @@
 	</head>
 	<body>
 
-	<div class="brand">{% block title %}Keep In Touch{% endblock %}</div>
+	<div class="brand"><a href="/">{% block title %}Keep In Touch{% endblock %}</a></div>
 	<!-- Navigation -->
 	{% if user.is_authenticated %}
 	<nav class="navbar navbar-default" role="navigation">
@@ -40,9 +40,6 @@
 					</li>
 					<li>
 						<a href="/contacts">Contacts</a>
-					</li>
-					<li>
-						<a href="/notifications">Notifications</a>
 					</li>
 					<li>
 						<a href="/logout">logout</a>
