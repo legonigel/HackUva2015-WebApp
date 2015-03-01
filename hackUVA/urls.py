@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^', include('keeptouch.urls')),
 	
 	url(r'^accounts/', include('allaccess.urls')),
+    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
 
     url(r'^admin/', include(admin.site.urls)),
 )
