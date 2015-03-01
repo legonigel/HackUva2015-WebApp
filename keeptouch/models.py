@@ -12,15 +12,24 @@ class User(models.Model):
 		onlineStr = ':online' if self.is_online else ':offline'
 		return self.name + " ID:" + self.fb_id + onlineStr
 
+class Conversation(models.Model):
+	user1			= models.ForeignKey(User, related_name="user1")
+	user2			= models.ForeignKey(User, related_name="user2")
+	timestamp		= models.DateTimeField('last published')
+	is_read			= models.BooleanField(default=False)
+	last_message	= models.CharField(max_length=256)
+
 class Message(models.Model):
 	is_read			= models.BooleanField(default=False)
 	timestamp		= models.DateTimeField('date published')
 	message_text	= models.CharField(max_length=256)
 	sender			= models.ForeignKey(User, related_name="sender")
 	reciever		= models.ForeignKey(User, related_name="reciever")
+	conversation 	= models.ForeignKey(Conversation, related_name="conversation", default='1')
 
 	def __str__(self):
 		return self.message_text + ", to " + self.reciever.name + " from " + self.sender.name
+	
 
 class Connection(models.Model):
 	user		= models.ForeignKey(User)
@@ -30,5 +39,6 @@ class Connection(models.Model):
 
 	def __str__(self):
 		return self.user.name + " is connected with token: " + self.token
-	
+
+
 	
